@@ -11,43 +11,41 @@ FoamFile
     format      ascii;
     class       dictionary;
     location    "system";
-    object      controlDict;
+    object      fvSchemes;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     pimpleFoam;
+ddtSchemes
+{
+    default         backward;
+}
 
-startFrom       startTime;
+gradSchemes
+{
+    default         Gauss linear;
+}
 
-startTime       0.0;
+divSchemes
+{
+    default         none;
+    div(phi,U)      Gauss linearUpwind grad(U);
+    div((nuEff*dev2(T(grad(U))))) Gauss linear;    
+}
 
-stopAt          endTime;
+laplacianSchemes
+{
+    default         Gauss linear corrected;
+}
 
-endTime       100.0;
+interpolationSchemes
+{
+    default         linear;
+}
 
-deltaT          0.001;
+snGradSchemes
+{
+    default         corrected;
+}
 
-writeControl    adjustableRunTime;
 
-writeInterval   0.1;
-
-purgeWrite      0;
-
-writeFormat     ascii;
-
-writePrecision  6;
-
-writeCompression off;
-
-timeFormat      general;
-
-timePrecision   6;
-
-runTimeModifiable false;
-
-adjustTimeStep on;
-
-maxCo    0.8;
-
-maxDeltaT 1.0;
 // ************************************************************************* //
