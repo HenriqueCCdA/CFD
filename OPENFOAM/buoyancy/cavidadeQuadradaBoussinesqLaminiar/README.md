@@ -7,7 +7,7 @@ blockMesh
 Rodar:
 
 ```bash
-buoyantForm
+buoyantFoam
 ```
 
 Escreve os arquivos no formato VTK:
