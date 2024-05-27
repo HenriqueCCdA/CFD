@@ -19,5 +19,5 @@ buoyantFoam
 Escreve os arquivos no formato `VTK`:
 
 ```bash
-foamToVtk
+foamToVtk -fields '(T U)'
 ```
